@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# ⚡ Quiz Arena - Canlı Çok Oyunculu Bilgi Yarışması
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quiz Arena, oyuncuların gerçek zamanlı olarak birbiriyle eşleştiği, zamana karşı yarıştığı ve puan topladığı modern bir web uygulamasıdır.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎨 Ekran Görüntüleri (Arayüz)
 
-## React Compiler
+### 🔑 Giriş & Karşılama
+![Giriş Ekranı](docs/images/giris-ekrani.jpeg)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### 🏠 Lobi & İstatistikler
+| Profil & Rozetler | Oda Kurma & Oyun Modları |
+| :---: | :---: |
+| ![Lobi 1](docs/images/loby-1.jpeg) | ![Lobi 2](docs/images/loby-2.jpeg) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ⚔️ Eşleşme & Oyun Salonu
+| Rakip Bekleniyor | Rakip Bulundu |
+| :---: | :---: |
+| ![Rakip Bekleme](docs/images/rakip-bekleme.jpeg) | ![Rakip Bulundu](docs/images/rakip-bulundu.jpeg) |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🎯 Canlı Yarışma & Oyun Sonu
+| Puan & Sorular | Rakip Ayrıldı |
+| :---: | :---: |
+| ![Puan Ekranı](docs/images/puan.jpeg) | ![Rakip Ayrıldı](docs/images/oyundan-ayrildi.jpeg) |
 
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔥 Öne Çıkan Özellikler
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* **⚡ Otomatik Hızlı Eşleşme (Matchmaking):** Kod girmeden tek tıkla boş odadaki bir rakiple veya yeni açılan odada eşleşme.
+* **🔑 Özel Oda Oluşturma:** 6 haneli oda kodu ile arkadaşlarınla özel maç yapma imkanı.
+* **🏆 Oyun Modları & Zorluk Seviyeleri:** Hızlı (1 dk), Standart (2 dk), Maraton (5 dk) ve Kolay/Orta/Zor seçenekleri.
+* **📲 Canlı Skor & Zaman Senkronizasyonu:** Firebase Firestore realtime dinleyicileri ile anlık puan güncellemeleri.
+* **🏅 Profil & Liderlik Tablosu:** Kullanıcı istatistikleri, kazanılan rozetler ve Global Top 10 sıralaması.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## 🛠️ Kullanılan Teknolojiler
+
+* **Frontend:** React, TypeScript, Vite, Tailwind CSS
+* **Backend / Database:** Firebase (Firestore, Auth)
+* **Deployment:** Vercel
+
+---
+
+## 🚀 Kurulum (Local Development)
+
+Projeyi kendi bilgisayarınızda çalıştırmak için:
+
+```bash
+# 1. Depoyu klonlayın
+git clone [https://github.com/edanesedemircan/Quiz-Arena.git](https://github.com/edanesedemircan/Quiz-Arena.git)
+
+# 2. Proje dizinine girin
+cd Quiz-Arena
+
+# 3. Bağımlılıkları yükleyin
+npm install
+
+# 4. Geliştirici sunucusunu başlatın
+npm run dev

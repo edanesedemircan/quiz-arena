@@ -35,12 +35,13 @@ export function Lobby({ user, onRoomJoined }: LobbyProps) {
     }
   }, [user]);
 
-  const currentPlayer: Player = {
-    id: user.uid,
-    name: user.displayName || 'Anonim Oyuncu',
-    photoURL: user.photoURL || undefined,
-    score: 0,
-  };
+  // GERÇEK TEST İÇİN RASTGELE ID OLUŞTURMA (Geçici Kontrol)
+const currentPlayer: Player = {
+  id: user?.uid ? `${user.uid}_${Math.random().toString(36).substring(7)}` : Math.random().toString(),
+  name: user?.displayName || 'Oyuncu',
+  photoURL: user?.photoURL || undefined,
+  score: 0,
+};
 
   // ⚡ OTOMATİK HIZLI EŞLEŞME (KODSUZ RAKİP BULMA)
   const handleQuickMatch = async () => {

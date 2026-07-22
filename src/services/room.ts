@@ -15,7 +15,6 @@ export async function createRoom(
 ) {
   const roomId = generateRoomCode();
 
-  // Dış API/Çeviri yerine seçilen zorluktaki yerel Türkçe soruları anında çekiyoruz
   const questionAmount = Math.max(30, durationMinutes * 20);
   const selectedQuestions = getQuestionsByDifficulty(difficulty, questionAmount);
 
@@ -24,9 +23,9 @@ export async function createRoom(
     oyuncu2: null,
     durum: 'bekliyor', // 'bekliyor' | 'basladi' | 'bitti'
     mevcutSoruIndex: 0,
-    toplamSureSaniye: durationMinutes * 60, // Seçilen süre (saniye)
+    toplamSureSaniye: durationMinutes * 60,
     aktifSoruHavuzu: selectedQuestions,
-    gameStartTime: null, // Arka sekme süre senkronu için oyun başladığında dolacak
+    gameStartTime: null,
     createdAt: new Date(),
   };
 
@@ -41,7 +40,7 @@ export function subscribeToRoom(roomId: string, callback: (room: any) => void) {
     if (snapshot.exists()) {
       callback({ id: snapshot.id, ...snapshot.data() });
     } else {
-      callback(null); // Oda silindiyse veya erişilemiyorsa
+      callback(null);
     }
   });
 }
@@ -54,12 +53,13 @@ export async function joinRoom(roomId: string, guestUser: { id: string; name: st
   });
 }
 
-// 4. OYUNU BAŞLATMA (Sunucu Zaman Damgası ile)
+// 4. OYUNU BAŞLATMA
+// 4. OYUNU BAŞLATMA
 export async function startGame(roomId: string) {
   const roomRef = doc(db, 'rooms', roomId);
   await updateDoc(roomRef, {
     durum: 'basladi',
-    gameStartTime: Date.now() // Her iki oyuncu için ortak başlama zamanı (Date.now())
+    gameStartTime: Date.now() // Her iki oyuncu için ortak başlama zamanı
   });
 }
 
@@ -72,7 +72,7 @@ export async function leaveRoom(roomId: string, isHost: boolean) {
   });
 }
 
-// 6. OTOMATİK EŞLEŞME (MATCHMAKING - Kodsuz Otomatik Oda Bulma)
+// 6. OTOMATİK EŞLEŞME (DÜZELTİLDİ 🚀)
 export async function findOrCreateRoom(
   user: { id: string; name: string },
   difficulty: string = 'kolay',
@@ -81,37 +81,39 @@ export async function findOrCreateRoom(
   try {
     const roomsRef = collection(db, 'rooms');
 
-    // Durumu 'bekliyor' olan ve henüz 2. oyuncusu katılmamış odaları sorgula
+    // Sadece durumu 'bekliyor' olan son 20 odayı çekiyoruz
     const q = query(
       roomsRef,
       where('durum', '==', 'bekliyor'),
-      where('oyuncu2', '==', null),
-      limit(10)
+      limit(20)
     );
 
     const querySnapshot = await getDocs(q);
     let availableRoomId: string | null = null;
 
-    // Kendimizin oluşturmadığı boş bir oda var mı bak
+    // Kendimizin OLUŞTURMADIĞI VE 2. oyuncusu GERÇEKTEN boş olan odayı bul
     querySnapshot.forEach((docSnap) => {
       const data = docSnap.data();
-      if (data.oyuncu1?.id !== user.id && !availableRoomId) {
+      const isDifferentHost = data.oyuncu1?.id !== user.id;
+      const hasNoGuest = !data.oyuncu2 || data.oyuncu2 === null;
+
+      if (isDifferentHost && hasNoGuest && !availableRoomId) {
         availableRoomId = docSnap.id;
       }
     });
 
-    // 1. Eğer katılabileceğimiz uygun bir oda bulunduysa katıl
+    // 1. Katılabileceğimiz başka birisinin boş odası varsa KATIL
     if (availableRoomId) {
       await joinRoom(availableRoomId, user);
       return availableRoomId;
     }
 
-    // 2. Uygun oda yoksa yeni oda oluştur ve kurucu (Host) ol
+    // 2. Uygun oda yoksa YENİ ODA OLUŞTUR (Host Ol ve Bekle)
     const newRoomId = await createRoom(user, difficulty, durationMinutes);
     return newRoomId;
+
   } catch (error) {
     console.error('Otomatik eşleşme hatası, yeni oda açılıyor:', error);
-    // Hata durumunda güvenli liman olarak yeni oda aç
     return await createRoom(user, difficulty, durationMinutes);
   }
 }

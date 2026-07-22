@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged, type User } from 'firebase/auth';
-import { auth, logoutUser } from './services/firebase';
+import { auth, checkRedirectResult, logoutUser } from './services/firebase';
 import { Auth } from './components/Auth';
 import { Lobby } from './components/Lobby';
 import { GameRoom } from './components/GameRoom';
@@ -11,6 +11,18 @@ export default function App() {
   const [roomId, setRoomId] = useState<string | null>(null);
 
   useEffect(() => {
+    // 1. Mobilde yönlendirme (redirect) sonrası gelen kullanıcıyı yakala
+    checkRedirectResult()
+      .then((redirectUser) => {
+        if (redirectUser) {
+          setUser(redirectUser);
+        }
+      })
+      .catch((err) => {
+        console.error("Redirect hatası:", err);
+      });
+
+    // 2. Genel oturum durumunu dinle
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
@@ -29,7 +41,7 @@ export default function App() {
     );
   }
 
-  // 1. Giriş yapılmamışsa Giriş (Auth) ekranı
+  // 1. Giriş yapılmamışsa Giriş ekranı
   if (!user) {
     return <Auth />;
   }
@@ -42,7 +54,6 @@ export default function App() {
         userId={user.uid} 
         onLeaveRoom={() => setRoomId(null)} 
       />
-
     );
   }
 

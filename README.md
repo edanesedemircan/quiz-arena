@@ -17,7 +17,7 @@ Canlı rakiplerle birebir (1v1) yüzleşin, saniyelerle yarışırken **Dondur**
 
 ### 🔑 Giriş & Karşılama
 <p align="center">
-  <img src="docs/images/giris-ekrani.jpeg" width="320" alt="Giriş Ekranı" />
+  <img src="docs/images/GirisEkrani.jpeg" width="320" alt="Giriş Ekranı" />
 </p>
 
 ---
@@ -25,21 +25,21 @@ Canlı rakiplerle birebir (1v1) yüzleşin, saniyelerle yarışırken **Dondur**
 ### 🏠 Lobi & Profil İstatistikleri
 | Profil & Rozetler | Oda Kurma & Oyun Modları |
 | :---: | :---: |
-| <img src="docs/images/loby-1.jpeg" width="300" alt="Lobi İstatistikler" /> | <img src="docs/images/loby-2.jpeg" width="300" alt="Oda Kurma" /> |
+| <img src="docs/images/loby1.jpeg" width="300" alt="Lobi İstatistikler" /> | <img src="docs/images/loby2.jpeg" width="300" alt="Oda Kurma" /> |
 
 ---
 
 ### ⚔️ Eşleşme & Bekleme Salonu
 | Rakip Bekleniyor | Rakip Bulundu |
 | :---: | :---: |
-| <img src="docs/images/rakip-bekleme.jpeg" width="300" alt="Bekleme Salonu" /> | <img src="docs/images/rakip-bulundu.jpeg" width="300" alt="Rakip Bulundu" /> |
+| <img src="docs/images/rakipBekleme.jpeg" width="300" alt="Bekleme Salonu" /> | <img src="docs/images/rakipBulundu.jpeg" width="300" alt="Rakip Bulundu" /> |
 
 ---
 
 ### 🎯 Canlı Rekabet & Oyun Sonu
 | Puan & Sorular | Rakip Oyundan Ayrıldı |
 | :---: | :---: |
-| <img src="docs/images/puan.jpeg" width="300" alt="Canlı Skor" /> | <img src="docs/images/oyundan-ayrildi.jpeg" width="300" alt="Rakip Ayrıldı" /> |
+| <img src="docs/images/puan.jpeg" width="300" alt="Canlı Skor" /> | <img src="docs/images/oyundanAyrıldı.jpeg" width="300" alt="Rakip Ayrıldı" /> |
 
 ---
 
@@ -79,10 +79,10 @@ Canlı rakiplerle birebir (1v1) yüzleşin, saniyelerle yarışırken **Dondur**
 
 ---
 
-## 🛠️ Teknolojiler (Tech Stack)
+## 🛠️ Kullanılan Teknolojiler
 
-* **Frontend:** React 18 (TypeScript), Vite, Tailwind CSS
-* **Backend / Database:** Firebase Firestore (Real-time NoSQL DB), Firebase Authentication (Google OAuth)
+* **Frontend:** React, TypeScript, Vite, Tailwind CSS
+* **Backend / Database:** Firebase (Firestore, Auth)
 * **Deployment:** Vercel
 
 ---
@@ -92,3 +92,22 @@ Canlı rakiplerle birebir (1v1) yüzleşin, saniyelerle yarışırken **Dondur**
 * **⚡ Sıfır Gecikmeli Senkronizasyon:** Firestore Real-time altyapısı sayesinde skorlar, dondurma jokerleri ve zaman senkronu milisaniyelik hassasiyetle gerçekleşir.
 * **🎯 İki Yönlü Stratejik Derinlik:** Sadece bilgiye değil, jokerlerin doğru zamanda kullanımına dayalı rekabetçi oyun dinamiği.
 * **🛡️ Hata Toleranslı Matchmaking:** Kopan bağlantıları tespit edip sistemi kilitlenmekten kurtaran akıllı durum yönetimi.
+
+---
+
+## 🚀 Kurulum (Local Development)
+
+Projeyi kendi bilgisayarınızda çalıştırmak için:
+
+```bash
+# 1. Depoyu klonlayın
+git clone [https://github.com/edanesedemircan/Quiz-Arena.git](https://github.com/edanesedemircan/Quiz-Arena.git)
+
+# 2. Proje dizinine girin
+cd Quiz-Arena
+
+# 3. Bağımlılıkları yükleyin
+npm install
+
+# 4. Geliştirici sunucusunu başlatın
+npm run dev

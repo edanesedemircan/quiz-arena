@@ -13,69 +13,86 @@ Canlı rakiplerle birebir (1v1) yüzleşin, saniyelerle yarışırken **Dondur**
 
 ---
 
-## 🎨 Ekran Görüntüleri ve Akışlar
-
-### 🔑 Giriş & Karşılama
-<p align="center">
-  <img src="docs/images/GirisEkrani.jpeg" width="320" alt="Giriş Ekranı" />
-</p>
-
----
-
-### 🏠 Lobi & Profil İstatistikleri
-| Profil & Rozetler | Oda Kurma & Oyun Modları |
-| :---: | :---: |
-| <img src="docs/images/loby1.jpeg" width="300" alt="Lobi İstatistikler" /> | <img src="docs/images/loby2.jpeg" width="300" alt="Oda Kurma" /> |
-
----
-
-### ⚔️ Eşleşme & Bekleme Salonu
-| Rakip Bekleniyor | Rakip Bulundu |
-| :---: | :---: |
-| <img src="docs/images/rakipBekleme.jpeg" width="300" alt="Bekleme Salonu" /> | <img src="docs/images/rakipBulundu.jpeg" width="300" alt="Rakip Bulundu" /> |
-
----
-
-### 🎯 Canlı Rekabet & Oyun Sonu
-| Puan & Sorular | Rakip Oyundan Ayrıldı |
-| :---: | :---: |
-| <img src="docs/images/puan.jpeg" width="300" alt="Canlı Skor" /> | <img src="docs/images/oyundanAyrıldı.jpeg" width="300" alt="Rakip Ayrıldı" /> |
-
----
-
-## 📱 Uygulama Detayları
+## 📱 Ekranlar, Akışlar ve Özellikler
 
 ### 1. 🔐 Giriş Ekranı
-* **Google OAuth Entegrasyonu:** Kullanıcılar tek tıkla güvenli bir şekilde oturum açar.
-* **Kişiselleştirilmiş İstatistikler:** Kullanıcının benzersiz kimliği (UID) üzerinden tüm maç geçmişi, puanları ve istatistikleri Firestore üzerinde güvenle saklanır.
+<p align="left">
+  <img src="docs/images/GirisEkrani.jpeg" width="300" alt="Giriş Ekranı" />
+</p>
 
-### 2. 🏛️ Lobi & Profil Paneli
+* **Google OAuth Entegrasyonu:** Kullanıcılar tek tıkla "Google ile Giriş Yap" butonunu kullanarak güvenli bir şekilde oturum açar.
+* **Kişiselleştirilmiş İstatistikler:** Kullanıcının benzersiz kimliği (UID) üzerinden tüm maç geçmişi, puanları ve başarımları Firestore üzerinde güvenle saklanır.
+
+---
+
+### 2. 🏛️ Lobi & Profil Ekranı (Lobi 1)
+<p align="left">
+  <img src="docs/images/loby1.jpeg" width="300" alt="Lobi İstatistikler ve Başarımlar" />
+</p>
+
 * **Performans İstatistikleri:** Toplam Puan, Kazanma Oranı (%), Toplam Maç Sayısı, Galibiyet Sayısı ve En İyi Galibiyet Serisi (🔥) anlık gösterilir.
-* **Başarım Rozetleri:** Oyuncunun performansına göre kilitleri açılan *"Keskin Nişancı"*, *"Işık Hızı"* ve *"Şampiyon"* rozetleri.
-* **🏆 Global Top 10 Sıralaması:** En yüksek skora sahip oyuncuları canlı gösteren liderlik tablosu.
-* **⚡ Otomatik Hızlı Maç:** Kod girmeye gerek kalmadan, akıllı matchmaking algoritması sayesinde tek tıkla boş odadaki bir rakiple eşleşme.
-* **➕ Özel Oda Oluşturma:** 
-  * **Zorluk Seviyesi:** Kolay, Orta, Zor.
-  * **Oyun Modları:** Hızlı (⚡), Standart (⚔️), Maraton (🏆).
-* **🔑 Koda Göre Katıl:** Arkadaşların paylaştığı 6 haneli özel oda kodunu girerek odaya katılma.
+* **Başarım Rozetleri:** Oyuncunun performansına göre kilitleri açılan *"Keskin Nişancı"*, *"Işık Hızı"* ve *"Şampiyon"* gibi özel başarı rozetleri.
+* **🏆 Global Top 10 Sıralaması:** Tüm oyuncular arasından en yüksek puana sahip ilk 10 kişiyi canlı gösteren sıralama paneli modalı.
+* **⚡ Otomatik Hızlı Maç:** Kod girmeye gerek kalmadan, akıllı matchmaking algoritması sayesinde "Hızlı Rakip Bul" butonuyla tek tıkla saniyeler içinde rakip bulma.
 
-### 3. ⏳ Bekleme Salonu & Matchmaking
-* **Oda Kurulumu & Davet:** Kurucu için sistem otomatik olarak **6 haneli benzersiz oda kodu** üretir.
-* **Akıllı Eşleşme:** İkinci oyuncu geldiğinde sistem oyuncuları eşleştirir (`Oyuncu 1 vs Oyuncu 2`).
-* **Canlı Geri Sayım:** *"Rakip Bulundu!"* ekranında 5 saniyelik geri sayım başlar ve her iki cihazı eşzamanlı olarak oyuna sokar.
+---
 
-### 4. 🎮 Oyun Sayfası & Canlı Rekabet
-* **Zaman Yönetimi:** Toplam oda süresi ve soru başına ayrılan süre anlık geriye sayar.
+### 3. ⚙️ Özel Oda Kurma & Katılma (Lobi 2)
+<p align="left">
+  <img src="docs/images/loby2.jpeg" width="300" alt="Oda Kurma ve Mod Seçimi" />
+</p>
+
+* **➕ Özel Oda Oluşturma:** Arkadaşlarınızla oynamak için kendi kurallarınızı belirleyeceğiniz özel oda oluşturma alanı.
+  * **Zorluk Seviyesi:** Kolay, Orta, Zor seçenekleri.
+  * **Oyun Modları:** Hızlı (⚡), Standart (⚔️), Maraton (🏆) seçenekleri.
+* **🔑 Koda Göre Katıl:** Arkadaşınızın oluşturduğu 6 haneli özel oda kodunu girerek doğrudan odaya dahil olma.
+
+---
+
+### 4. ⏳ Bekleme Salonu
+<p align="left">
+  <img src="docs/images/rakipBekleme.jpeg" width="300" alt="Bekleme Salonu" />
+</p>
+
+* **Oda Kurulumu & Davet:** "Hızlı Rakip Bul" veya "Özel Oda Kur" dendiğinde sistem sizi bekleme salonuna atar ve otomatik olarak **6 haneli benzersiz bir oda kodu** üretir.
+* **Rakip Aranıyor:** Sistem ikinci oyuncuyu beklerken durumu canlı takip eder. İstediğiniz an "Odadan Çık" butonu ile lobiye dönebilirsiniz.
+
+---
+
+### 5. ⚔️ Rakip Bulundu Ekranı
+<p align="left">
+  <img src="docs/images/rakipBulundu.jpeg" width="300" alt="Rakip Bulundu Ekranı" />
+</p>
+
+* **Anlık Eşleşme:** İkinci oyuncu geldiğinde sistem Kurucu (Oyuncu 1) ile Katılanı (Oyuncu 2) eşleştirir.
+* **5 Saniyelik Otomatik Geri Sayım:** *"Rakip Bulundu!"* uyarısıyla birlikte 5 saniyelik geri sayım başlar ve her iki cihazı da eşzamanlı olarak oyun alanına yönlendirir.
+
+---
+
+### 6. 🎮 Oyun Sayfası & Canlı Rekabet
+<p align="left">
+  <img src="docs/images/puan.jpeg" width="300" alt="Oyun Ekranı ve Canlı Skor" />
+</p>
+
+* **Süre Yönetimi:** Seçilen oyun moduna göre Toplam Oda Süresi ve Soru Başına Süre anlık geriye sayar.
 * **Dinamik Puanlama:** Doğru cevaplar puan kazandırırken, yanlış cevaplarda sistem **-10 Puan** düşer.
-* **⚔️ Stratejik Joker Sistemi:**
+* **⚔️ Stratejik Jokerler:**
   1. 🛡️ **Kalkan Jokeri:** Yanlış cevap verilse dahi eksi puan almayı engeller.
-  2. 💣 **%50 : %50 Jokeri:** Yanlış olan iki şıkkı eler.
-  3. ⏱️ **+5sn Süre Jokeri:** Sıkışılan anlarda ek süre kazandırır.
-  4. 🧊 **Dondur Jokeri (Sabotaj):** Karşı tarafın ekranını kilitler; rakip cevap veremezken rahatça öne geçme fırsatı tanır.
+  2. 💣 **%50 : %50 Jokeri:** Yanlış olan iki şıkkı eleyerek doğru cevaba odaklanmayı sağlar.
+  3. ⏱️ **+5sn Süre Jokeri:** Sıkışılan anlarda soru süresine ek süre kazandırır.
+  4. 🧊 **Dondur Jokeri (Sabotaj):** Karşı tarafın ekranını kilitler; rakip soruyu okuyup cevaplayamazken oyuncuya rahatça düşünme ve öne geçme fırsatı tanır.
+* **Anlık Skor Tablosu:** Her iki oyuncunun skoru, soru numarası ve cevap durumları eşzamanlı güncellenir.
+* **Odadan Çık Butonu:** İstendiği an maçtan çekilme imkanı sunar.
 
-### 5. 🚪 Odadan Ayrılma & Anlık Bildirim
-* **Erken Ayrılma Tespiti:** Oyunculardan biri çıktığında veya bağlantısı koptuğunda, Firestore Real-time listener durumu anında tespit eder.
-* **Canlı Uyarı:** Diğer oyuncunun ekranında *"⚠️ Rakip oyundan ayrıldı"* uyarısı belirir ve maç sonlanır.
+---
+
+### 7. 🚪 Odadan Ayrılma & Anlık Bildirim
+<p align="left">
+  <img src="docs/images/oyundanAyrıldı.jpeg" width="300" alt="Rakip Oyundan Ayrıldı Uyarısı" />
+</p>
+
+* **Erken Ayrılma Tespiti:** Oyunculardan biri yarışma esnasında "Odadan Çık" butonuna bastığında veya bağlantısı koptuğunda, Firestore Real-time listener durumu anında tespit eder.
+* **Canlı Bildirim:** Diğer oyuncunun ekranında *"⚠️ Rakip oyundan ayrıldı"* uyarısı belirir, maç sonlanır ve oyuncu güvenli bir şekilde lobiye döner.
 
 ---
 
